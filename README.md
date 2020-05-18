@@ -35,6 +35,13 @@ $ docker pull gladmo/dingbot
 $ docker run --rm gladmo/dingbot dingbot --help
 ```
 
+### Docker command alias
+```shell script
+$ alias dingbot="docker run --rm gladmo/dingbot dingbot --token 'you token' --secret 'you secret'"
+# then
+$ dingbot text "hello world"
+```
+
 ### build
 ```shell script
 $ git clone https://github.com/gladmo/dingbot.git
@@ -49,6 +56,14 @@ $ ./dingbot version
 $ ./dingbot --token "you token" --secret "you secret" text "hello world"
 # or
 $ echo "hello world" | ./dingbot --token "you token" --secret "you secret" text
+```
+
+### command alias
+```shell script
+# replace path/to to you dingbot path
+$ alias dingbot="path/to/dingbot --token 'you token' --secret 'you secret'"
+# then
+$ dingbot text "hello world"
 ```
 
 ### use config 
