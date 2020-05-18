@@ -29,6 +29,29 @@ func main() {
 ```
 
 ## Command line
+### preview
+```shell script
+send dingtalk message
+
+Usage:
+  dingbot [command]
+
+Available Commands:
+  help        Help about any command
+  init        init config
+  markdown    send markdown dingtalk message
+  text        send text dingtalk message
+  version     Print the version number of Dingbot
+
+Flags:
+      --config string   config file (default is $HOME/dingbot.toml)
+  -h, --help            help for dingbot
+      --secret string   dingtalk robot secret
+      --token string    dingtalk robot token (require)
+
+Use "dingbot [command] --help" for more information about a command.
+```
+
 ### use Docker
 ```shell script
 $ docker pull gladmo/dingbot
