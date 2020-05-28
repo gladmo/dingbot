@@ -13,7 +13,7 @@ import (
 
 var text = &cobra.Command{
 	Use:   "text",
-	Short: "send text dingtalk message",
+	Short: "send dingtalk text message",
 	Run: func(cmd *cobra.Command, args []string) {
 		at, err := cmd.PersistentFlags().GetStringSlice("at")
 		if err != nil {

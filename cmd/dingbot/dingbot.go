@@ -14,7 +14,7 @@ import (
 var (
 	cfgFile  string
 	dingTalk *dingbot.DingTalk
-	Version  = "v1.0.0"
+	Version  = "v1.0.1"
 )
 
 var cmd = &cobra.Command{
@@ -51,7 +51,7 @@ func init() {
 	cmd.PersistentFlags().String("token", "", "dingtalk robot token (require)")
 	cmd.PersistentFlags().String("secret", "", "dingtalk robot secret")
 
-	cmd.AddCommand(text, markdown, versionCmd, initCommand)
+	cmd.AddCommand(text, markdown, versionCmd, initCommand, link)
 }
 
 func Execute() {

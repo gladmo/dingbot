@@ -17,6 +17,7 @@ import (
 
 const dingTalkHost = `https://oapi.dingtalk.com`
 
+// DingTalk client
 type DingTalk struct {
 	AccessToken string
 	Secret      string
@@ -78,6 +79,7 @@ func (th DingTalk) Send(msg Message) (err error) {
 	return
 }
 
+// dingRes 钉钉返回结果
 type dingRes struct {
 	ErrCode int    `json:"errcode"`
 	ErrMsg  string `json:"errmsg"`

@@ -11,15 +11,19 @@ import (
 	"github.com/gladmo/dingbot"
 )
 
-var markdown = &cobra.Command{
-	Use:   "markdown",
-	Short: "send dingtalk markdown message",
+var link = &cobra.Command{
+	Use:   "link",
+	Short: "send dingtalk link message",
 	Run: func(cmd *cobra.Command, args []string) {
-		at, err := cmd.PersistentFlags().GetStringSlice("at")
+		title, err := cmd.PersistentFlags().GetString("title")
 		if err != nil {
 			fmt.Println(err.Error())
 		}
-		title, err := cmd.PersistentFlags().GetString("title")
+		messageURL, err := cmd.PersistentFlags().GetString("message-url")
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		picURL, err := cmd.PersistentFlags().GetString("pic-url")
 		if err != nil {
 			fmt.Println(err.Error())
 		}
@@ -32,14 +36,7 @@ var markdown = &cobra.Command{
 			text = args[0]
 		}
 
-		msg := dingbot.MarkdownMessage(title, text)
-
-		if len(at) != 0 {
-			err = msg.At(false, at...)
-			if err != nil {
-				fmt.Println(err.Error())
-			}
-		}
+		msg := dingbot.LinkMessage(title, text, messageURL, picURL)
 
 		err = dingTalk.Send(msg)
 		if err != nil {
@@ -62,6 +59,7 @@ var markdown = &cobra.Command{
 }
 
 func init() {
-	markdown.PersistentFlags().String("title", "", "markdown title")
-	markdown.PersistentFlags().StringSlice("at", []string{}, "at some one")
+	link.PersistentFlags().String("title", "", "link title")
+	link.PersistentFlags().String("message-url", "", "link message url")
+	link.PersistentFlags().String("pic-url", "", "link pic url")
 }
