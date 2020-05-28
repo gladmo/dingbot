@@ -39,8 +39,9 @@ Usage:
 Available Commands:
   help        Help about any command
   init        init config
-  markdown    send markdown dingtalk message
-  text        send text dingtalk message
+  link        send dingtalk link message
+  markdown    send dingtalk markdown message
+  text        send dingtalk text message
   version     Print the version number of Dingbot
 
 Flags:
