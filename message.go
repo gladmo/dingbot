@@ -57,8 +57,8 @@ type actionCard struct {
 	Buttons        []buttons `json:"btns"`
 }
 
-// links ...
-type links struct {
+// Links ...
+type Links struct {
 	Title      string `json:"title"`      // 必填
 	MessageURL string `json:"messageURL"` // 必填
 	PicURL     string `json:"picURL"`     // 必填
@@ -67,7 +67,7 @@ type links struct {
 // feedCard message
 // todo
 type feedCard struct {
-	Links []links `json:"links"`
+	Links []Links `json:"links"`
 }
 
 // markdown message
@@ -118,5 +118,20 @@ func LinkMessage(title, text, messageURL, picURL string) (msg Message) {
 		MessageURL: messageURL,
 		PicURL:     picURL,
 	}
+	return
+}
+
+// FeedCardLink create feedCard link
+func FeedCardLink(title, messageURL, picURL string) (l Links) {
+	l.Title = title
+	l.MessageURL = messageURL
+	l.PicURL = picURL
+	return
+}
+
+// FeedCardMessage dingTalk feedCard message
+func FeedCardMessage(links ...Links) (msg Message) {
+	msg.MsgType = "feedCard"
+	msg.FeedCard = &feedCard{Links: links}
 	return
 }

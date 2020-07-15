@@ -37,6 +37,7 @@ Usage:
   dingbot [command]
 
 Available Commands:
+  feedcard    send dingtalk feedcard message
   help        Help about any command
   init        init config
   link        send dingtalk link message
@@ -80,6 +81,25 @@ $ ./dingbot version
 $ ./dingbot --token "you token" --secret "you secret" text "hello world"
 # or
 $ echo "hello world" | ./dingbot --token "you token" --secret "you secret" text
+```
+
+### send markdown message
+```shell script
+$ ./dingbot markdown --title hello '## hello world'
+# or
+$ echo "hello world" | ./dingbot --token "you token" --secret "you secret" markdown --title hello
+```
+
+### send link message
+```shell script
+$ ./dingbot --token "you token" --secret "you secret" link --title hello --message-url 'https://6cm.co' 'hello world'
+# or
+$ echo "hello world" | ./dingbot --token "you token" --secret "you secret" link --title hello --message-url 'https://6cm.co'
+```
+
+### send feed card message
+```shell script
+$ ./dingbot --token "you token" --secret "you secret" feedcard --json-link '{"title":"时代的火车向前开","messageURL":"https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&mid=2650316842&idx=1&sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&scene=2&srcid=09189AnRJEdIiWVaKltFzNTw&from=timeline&isappinstalled=0&key=&ascene=2&uin=&devicetype=android-23&version=26031933&nettype=WIFI","picURL":"https://gw.alicdn.com/tfs/TB1ayl9mpYqK1RjSZLeXXbXppXa-170-62.png"}' --json-link '{"title":"时代的火车向前开","messageURL":"https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&mid=2650316842&idx=1&sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&scene=2&srcid=09189AnRJEdIiWVaKltFzNTw&from=timeline&isappinstalled=0&key=&ascene=2&uin=&devicetype=android-23&version=26031933&nettype=WIFI","picURL":"https://gw.alicdn.com/tfs/TB1ayl9mpYqK1RjSZLeXXbXppXa-170-62.png"}'
 ```
 
 ### command alias

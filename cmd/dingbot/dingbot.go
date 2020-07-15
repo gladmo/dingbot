@@ -14,7 +14,7 @@ import (
 var (
 	cfgFile  string
 	dingTalk *dingbot.DingTalk
-	Version  = "v1.0.1"
+	Version  = "v1.0.2"
 )
 
 var cmd = &cobra.Command{
@@ -27,6 +27,10 @@ var cmd = &cobra.Command{
 		}
 		if token == "" {
 			token = viper.GetString("token")
+		}
+
+		if token == "" {
+			panic("Ding talk token not set")
 		}
 
 		secret, err := cmd.Parent().PersistentFlags().GetString("secret")
@@ -51,7 +55,7 @@ func init() {
 	cmd.PersistentFlags().String("token", "", "dingtalk robot token (require)")
 	cmd.PersistentFlags().String("secret", "", "dingtalk robot secret")
 
-	cmd.AddCommand(text, markdown, versionCmd, initCommand, link)
+	cmd.AddCommand(text, markdown, versionCmd, initCommand, link, feedcard)
 }
 
 func Execute() {
