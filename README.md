@@ -16,12 +16,9 @@ func main() {
 
 	text := "hello world"
 	msg := dingbot.TextMessage(text)
-	ding := &dingbot.DingTalk{
-		AccessToken: token,
-		Secret:      secret,
-	}
+	client := dingbot.New(token, secret)
 
-	err := ding.Send(msg)
+	err := client.Send(msg)
 	if err != nil {
 		panic(err)
 	}

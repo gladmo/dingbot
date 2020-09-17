@@ -41,10 +41,7 @@ var cmd = &cobra.Command{
 			secret = viper.GetString("secret")
 		}
 
-		dingTalk = &dingbot.DingTalk{
-			AccessToken: token,
-			Secret:      secret,
-		}
+		dingTalk = dingbot.New(token, secret)
 	},
 }
 

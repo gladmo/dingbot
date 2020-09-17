@@ -23,6 +23,14 @@ type DingTalk struct {
 	Secret      string
 }
 
+// New ding talk client
+func New(accessToken, secret string) *DingTalk {
+	return &DingTalk{
+		AccessToken: accessToken,
+		Secret:      secret,
+	}
+}
+
 // getURL 构造请求地址
 func (th *DingTalk) getURL() (URL string) {
 	URL = fmt.Sprintf("%s/robot/send?access_token=%s", dingTalkHost, th.AccessToken)
